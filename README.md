@@ -39,7 +39,7 @@ Simular o controle de um **motor micro servo padrão** através de sinais **PWM*
 
 Assista ao vídeo de apresentação e funcionamento do projeto no link abaixo:  
 
-🔗 [Vídeo de apresentação](https://www.dropbox.com/scl/fi/i32f4t9dqggn4c1durb4o/2025-02-04-08-52-05.mkv?rlkey=s6ofq9yumuts3h8chte052cuj&dl=0)  
+🔗 [Vídeo de apresentação](https://vimeo.com/1055383633/63dae943c3)  
 
 ## 📜 Licença  
 

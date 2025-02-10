@@ -1,0 +1,107 @@
+### Apresentação: Controle de Servomotor e LED com PWM no Raspberry Pi Pico
+
+---
+
+#### **Introdução**
+- **Objetivo**: Demonstrar o controle de um servomotor e um LED utilizando PWM (Pulse Width Modulation) no Raspberry Pi Pico.
+- **Tecnologias Utilizadas**:
+  - Linguagem C
+  - Raspberry Pi Pico (microcontrolador RP2040)
+  - PWM para controle de ângulo do servomotor e brilho do LED.
+
+---
+
+#### **Componentes do Código**
+
+1. **Definições de Pinos e Constantes**:
+   - `SERVO_PIN`: Pino GPIO 22 conectado ao servomotor.
+   - `LED_PIN`: Pino GPIO 12 conectado ao LED.
+   - `PWM_FREQ`: Frequência de 50Hz (período de 20ms), comum para servomotores.
+   - `PWM_WRAP`: Valor de 20000 ticks para um clock de 1MHz, correspondendo a 20ms.
+
+2. **Função `setup_pwm`**:
+   - Configura os pinos do servomotor e do LED para funcionar como PWM.
+   - Ajusta o divisor de clock para 125, resultando em um clock de 1MHz.
+   - Define o valor de `PWM_WRAP` para 20000 ticks (20ms).
+
+3. **Função `set_pwm_duty`**:
+   - Define o ciclo ativo do PWM (duty cycle) para um pino específico.
+   - Utilizada para controlar o ângulo do servomotor e o brilho do LED.
+
+4. **Função `main`**:
+   - Inicializa a entrada e saída padrão (`stdio_init_all`).
+   - Configura o PWM (`setup_pwm`).
+   - Controla o servomotor e o LED em três ângulos específicos (0°, 90°, 180°), com pausas de 5 segundos entre cada movimento.
+   - Realiza uma movimentação periódica do servomotor entre 0° e 180°, com o LED ajustando seu brilho conforme o ângulo.
+
+---
+
+#### **Funcionamento do Código**
+
+1. **Inicialização**:
+   - O PWM é configurado para operar a 50Hz, com um período de 20ms.
+   - O servomotor e o LED são conectados aos pinos GPIO 22 e 12, respectivamente.
+
+2. **Controle de Ângulo do Servomotor**:
+   - O servomotor é movido para três posições:
+     - **180°**: Duty cycle de 2400μs.
+     - **90°**: Duty cycle de 1470μs.
+     - **0°**: Duty cycle de 500μs.
+   - O LED ajusta seu brilho conforme o ângulo do servomotor.
+
+3. **Movimentação Periódica**:
+   - O servomotor é movido suavemente de 0° a 180° e vice-versa, com incrementos de 5μs a cada 10ms.
+   - O LED varia seu brilho de acordo com o ângulo do servomotor.
+   - Após alcançar 0°, o sistema aguarda 1 segundo antes de reiniciar o ciclo.
+
+---
+
+#### **Explicação Técnica**
+
+- **PWM (Pulse Width Modulation)**:
+  - Técnica utilizada para controlar a quantidade de energia enviada a um dispositivo.
+  - No caso do servomotor, o duty cycle determina o ângulo de rotação.
+  - Para o LED, o duty cycle controla o brilho.
+
+- **Cálculo do Duty Cycle**:
+  - **Servomotor**:
+    - 500μs = 0°
+    - 1470μs = 90°
+    - 2400μs = 180°
+  - **LED**:
+    - O brilho é proporcional ao duty cycle, variando de 500μs (mínimo) a 2400μs (máximo).
+
+---
+
+#### **Aplicações Práticas**
+
+- **Robótica**: Controle de braços robóticos, pernas, ou qualquer mecanismo que precise de movimentos precisos.
+- **Automação**: Controle de portas, janelas, ou qualquer sistema que necessite de movimentação angular.
+- **Efeitos Visuais**: Controle de brilho de LEDs para criar efeitos de iluminação dinâmica.
+
+---
+
+#### **Conclusão**
+
+- O código demonstra como utilizar PWM para controlar um servomotor e um LED de forma sincronizada.
+- A flexibilidade do Raspberry Pi Pico permite a implementação de sistemas de controle precisos e eficientes.
+- Este exemplo pode ser expandido para incluir mais servomotores, sensores, ou outras funcionalidades, dependendo da aplicação desejada.
+
+---
+
+#### **Próximos Passos**
+
+- **Integração com Sensores**: Adicionar sensores para controle automático do servomotor com base em leituras do ambiente.
+- **Interface Gráfica**: Desenvolver uma interface gráfica para controle manual do servomotor e do LED.
+- **Comunicação sem Fio**: Implementar comunicação via Bluetooth ou Wi-Fi para controle remoto.
+
+---
+
+#### **Referências**
+
+- Documentação oficial do Raspberry Pi Pico: [https://www.raspberrypi.org/documentation/pico/getting-started/](https://www.raspberrypi.org/documentation/pico/getting-started/)
+- Tutoriais sobre PWM e servomotores: [https://learn.adafruit.com/](https://learn.adafruit.com/)
+
+---
+
+**Fim da Apresentação**
