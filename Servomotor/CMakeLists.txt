@@ -55,7 +55,7 @@ target_include_directories(Servomotor PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(Servomotor 
-        
+        hardware_pwm
         )
 
 pico_add_extra_outputs(Servomotor)
